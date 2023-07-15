@@ -4,28 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css" />
+    <script src="https://kit.fontawesome.com/6f6c4baace.js" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
 <body>
     <template id="card__template">
         <div class="card">
-            <img src="food.jpg" alt="Avatar" style="width:100%" />
+            <img src="images/food2.jpg" alt="Avatar" style="width:100%" />
             <div class="container">
                 <h4><b class="card__name">name</b></h4> 
                 <p class="card__details">details</p>
                 <p>$<span class="card__price">price</span></p>
-                <button class="card__button">Add</button>
+                <button class="card__button">
+                    <i class="fa fa-2x fa-cart-plus" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
     </template>
     
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <i class="fa fa-4x fa-shopping-cart" aria-hidden="true"></i>
+            <div class="modal-body">
+                <p class="modal-txt">default value</p>
+            </div>
+        </div>
+    </div>
+
     <header id="header">
         <div class="header__menu_type">
             <a href="#">all</a>
         </div>
 
         <div class="header__icons">
-            <div class="header__icons_cart">Cart <span>(1)</span></div>
+            <div class="header__icons_cart"> 
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span class="cart__count badge">0</span>
+            </div>
         </div>
     </header>
 
