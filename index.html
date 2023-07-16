@@ -22,14 +22,27 @@
             </div>
         </div>
     </template>
+
+    <template id="cart-line">
+        <div class="cart-line__div">
+            <b>Item:</b> <span class="cart-line-id" style="margin-right: 15px;">default</span>
+            <b>Quantity:</b>
+            <input style="width: 30px;" type="number"/>
+            <b style="margin: 0px 15px;">Price:</b><span class="cart-line-amount">0</span>
+            <i class="fa fa-trash" aria-hidden="true" style="margin: 0px 15px;"></i>
+        </div>
+    </template>
     
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <i class="fa fa-4x fa-shopping-cart" aria-hidden="true"></i>
-            <div class="modal-body">
+            <i class="fa fa-4x fa-shopping-cart modal-content__cart-icon" aria-hidden="true"></i>
+            <div class="modal-body custom-flex-box">
                 <p class="modal-txt">default value</p>
             </div>
+            <hr/>
+            <b>Total :  </b><span class="modal-txt-total">0</span>
+            <button>Pay</button>
         </div>
     </div>
 

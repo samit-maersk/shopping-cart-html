@@ -69,7 +69,19 @@ menus.map((m,index) => {
 
 //add to cart 
 function addToCart(v) {
-    cart.push(v);
+    //Logic to increase quantity
+    const isVailable = cart.find(d => d.id === v);
+    if(isVailable) {
+        cart.map(d => {
+            if(d.id == v) {
+                d.quantity = d.quantity + 1
+            }
+            return d;
+        })
+    } else {
+        cart.push({id: v, quantity: 1})
+    }
+        
     const cartCount = document.querySelector('.cart__count');
     cartCount.textContent = cart.length;
 }
@@ -87,16 +99,26 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 // and prepare the data for modal
 const modalBody = document.querySelector('.modal-body');
+const cartLineTemplate = document.querySelector("#cart-line");
 btn.onclick = function() {
-
     modal.style.display = "block";
     modalBody.innerHTML= "";
     cart.map(m => {
-        const p = document.createElement('p');
-        p.textContent = JSON.stringify(menus[m])
+        const cartLine = document.importNode(cartLineTemplate.content, true);
+        const item = menus.filter(f => f.id === m.id);
+        console.log(item)
+        //cart-line-id
+        cartLine.querySelector('.cart-line-id').textContent = item[0].name
+        //input
+        cartLine.querySelector('input').value = m.quantity
+        //cart-line-amount
+        cartLine.querySelector('.cart-line-amount').textContent = item[0].price * m.quantity
 
-        modalBody.appendChild(p)
+        modalBody.appendChild(cartLine)
     })
+
+    const total = cart.reduce((r, i) => r + i.quantity * menus[i.id -1].price, 0);
+    document.querySelector('.modal-txt-total').textContent = total
 }
 
 // When the user clicks on <span> (x), close the modal
